@@ -1,13 +1,34 @@
-import React from "react";
-import { NavLink } from "react-router";
-import userImg from "../assets/user.png"
+import React, { use } from "react";
+import { Link, NavLink } from "react-router";
+import userImg from "../assets/user.png";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
-    const links = <>
-        <li><NavLink to={"/"}>Home</NavLink></li>
-        <li><NavLink to={"/login"}>Login</NavLink></li>
-        <li><NavLink to={"/register"}>Register</NavLink></li>
+  const { user, logOut } = use(AuthContext);
+  const handleLogOut = (e) => {
+    e.preventDefault();
+    logOut()
+      .then((result) => {
+        alert("Succussfully Sign Out!");
+      })
+      .catch((error)=>{
+        alert("Something is Wrong!")
+      });
+  };
+
+  const links = (
+    <>
+      <li>
+        <NavLink to={"/"}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/auth/login"}>Login</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/auth/register"}>Register</NavLink>
+      </li>
     </>
+  );
   return (
     <div>
       <nav className="navbar bg-base-100 shadow-sm">
@@ -40,14 +61,29 @@ const Navbar = () => {
           <a className="btn btn-ghost text-xl">ToyKids</a>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 ">
-            {links}
-          </ul>
+          <ul className="menu menu-horizontal px-1 ">{links}</ul>
         </div>
-        <div className="navbar-end flex gap-2 items-center">
+        {user ? (
+          <div className="navbar-end flex gap-2 items-center">
             <img className="" src={userImg} alt="" />
-          <a className="btn btn-primary text-white font-semibold ">Login</a>
-        </div>
+            <button
+              onClick={handleLogOut}
+              className="btn btn-primary text-white font-semibold "
+            >
+              Log Out
+            </button>
+          </div>
+        ) : (
+          <div className="navbar-end flex gap-2 items-center">
+            <img className="" src={userImg} alt="" />
+            <Link
+              to={"/auth/login"}
+              className="btn btn-primary text-white font-semibold "
+            >
+              Login
+            </Link>
+          </div>
+        )}
       </nav>
     </div>
   );

@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 import { Outlet } from "react-router";
 import Footer from "../Components/Footer";
 
-const MainLayout = () => {
+const AuthLayout = () => {
   return (
     <div>
       <header className="w-11/12 mx-auto py-4 ">
@@ -17,4 +17,4 @@ const MainLayout = () => {
   );
 };
 
-export default MainLayout;
+export default AuthLayout;

@@ -3,6 +3,9 @@ import MainLayout from "../Layouts/MainLayout";
 import { Component } from "react";
 import Home from "../Pages/Home";
 import ToyIndividual from "../Pages/ToyIndividual";
+import Login from "../Pages/Login";
+import Register from "../Pages/Register";
+import AuthLayout from "../Layouts/AuthLayout";
 
 const router = createBrowserRouter([
     {
@@ -29,8 +32,18 @@ const router = createBrowserRouter([
         element: <h2>This is profile</h2>
     },
     {
-        path: '/contact',
-        element: <h2>This is Contact</h2>
+        path: '/auth',
+        element: <AuthLayout></AuthLayout>,
+        children: [
+            {
+                path: "/auth/login",
+                Component: Login
+            },
+            {
+                path: "/auth/Register",
+                Component: Register
+            },
+        ]
     },
     {
         path: '/category/:id',
