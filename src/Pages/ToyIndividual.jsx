@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar";
 import ToyDetails from "../Components/ToyDetails";
 import { useLoaderData, useParams } from "react-router";
 import Footer from "../Components/Footer";
+import DetailsForm from "../Components/DetailsForm";
 
 const ToyIndividual = () => {
   const data = useLoaderData();
@@ -20,6 +21,7 @@ const ToyIndividual = () => {
       </header>
       <main className="w-11/12 mx-auto">
         <ToyDetails toy={toy}></ToyDetails>
+        <DetailsForm></DetailsForm>
       </main>
       <Footer></Footer>
     </div>

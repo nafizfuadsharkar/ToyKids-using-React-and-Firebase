@@ -8,6 +8,7 @@ import Register from "../Pages/Register";
 import AuthLayout from "../Layouts/AuthLayout";
 import PrivateRoute from "../Provider/PrivateRoute";
 import Loading from "../Pages/Loading";
+import About from "../Components/About";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
         loader: () => fetch("/toys.json"),
         hydrateFallbackElement: <Loading></Loading>,
       },
+      {
+        path: "/about",
+        Component: About
+      }
     ],
   },
   {

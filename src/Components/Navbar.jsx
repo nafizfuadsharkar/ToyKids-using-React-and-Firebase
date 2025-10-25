@@ -27,6 +27,9 @@ const Navbar = () => {
       <li>
         <NavLink to={"/auth/register"}>Register</NavLink>
       </li>
+      <li>
+        <NavLink to={"/about"}>About</NavLink>
+      </li>
     </>
   );
   return (
@@ -64,12 +67,18 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1 ">{links}</ul>
         </div>
         {user ? (
-          <div className="navbar-end flex gap-2 items-center">
+          <div className="navbar-end flex gap-2 items-center relative group ">
             <img
               className="w-12 rounded-full"
               src={user ? user.photoURL : userImg}
               alt="User"
             />
+            {user && (
+              <span className="absolute -bottom-3 
+               top-1/2 left-full ml-2 -translate-y-1/2 bg-gray-800 text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
+                {user.displayName}
+              </span>
+            )}
 
             <button
               onClick={handleLogOut}

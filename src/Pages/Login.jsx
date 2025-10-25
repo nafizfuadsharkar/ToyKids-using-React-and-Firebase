@@ -4,7 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
   const [error, setError] = useState("");
-  const { signIn } = use(AuthContext);
+  const { signIn, signInWithGoogle } = use(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
   const handleLogIn = (e) => {
@@ -23,6 +23,11 @@ const Login = () => {
         const errorMsg = error.message;
         setError(errorCode);
       });
+  };
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then(() => navigate(location.state || "/"))
+      .catch((err) => setError(err.code));
   };
 
   return (
@@ -55,7 +60,7 @@ const Login = () => {
               <div>
                 <a className="link link-hover">Forgot password?</a>
               </div>
-              {error && <p className="text-red-500 text-xs">{error}</p> }
+              {error && <p className="text-red-500 text-xs">{error}</p>}
               <button type="submit" className="btn btn-primary mt-4">
                 Login
               </button>
@@ -68,6 +73,19 @@ const Login = () => {
               </p>
             </fieldset>
           </form>
+          <div>
+            <button
+              onClick={handleGoogleSignIn}
+              className="btn btn-outline w-full flex items-center justify-center gap-2"
+            >
+              <img
+                src="https://www.svgrepo.com/show/355037/google.svg"
+                alt="Google"
+                className="w-5 h-5"
+              />
+              Sign in with Google
+            </button>
+          </div>
         </div>
       </div>
     </div>
