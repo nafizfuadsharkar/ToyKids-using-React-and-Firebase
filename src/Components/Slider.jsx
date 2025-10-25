@@ -42,7 +42,7 @@ const Slider = () => {
         >
           <img
             src={slide.img}
-            className="w-full h-[500px] md:h-[700px] object-cover"
+            className="w-full h-[500px] object-cover"
             alt={slide.title}
           />
 
@@ -51,9 +51,7 @@ const Slider = () => {
           <div className="absolute flex flex-col justify-center h-full pl-10 md:pl-20 text-white space-y-4">
             <h2 className="text-3xl md:text-5xl font-bold">{slide.title}</h2>
             <p className="max-w-lg text-sm md:text-lg">{slide.desc}</p>
-            <button className="btn btn-primary w-fit mt-3">
-              Learn More
-            </button>
+            <button className="btn btn-primary w-fit mt-3">Learn More</button>
           </div>
 
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -66,9 +64,7 @@ const Slider = () => {
               ❮
             </a>
             <a
-              href={`#slide${
-                slides[index + 1]?.id || slides[0].id
-              }`}
+              href={`#slide${slides[index + 1]?.id || slides[0].id}`}
               className="btn btn-circle bg-black/50 border-none hover:bg-black/70"
             >
               ❯

@@ -12,6 +12,11 @@ const router = createBrowserRouter([
             {
                 index: true,
                 Component: Home
+            },
+            {
+                path: "/category/:id",
+                element: <ToyIndividual></ToyIndividual>,
+                loader:()=>fetch("/toys.json")
             }
         ]
     },
