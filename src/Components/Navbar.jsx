@@ -11,8 +11,8 @@ const Navbar = () => {
       .then((result) => {
         alert("Succussfully Sign Out!");
       })
-      .catch((error)=>{
-        alert("Something is Wrong!")
+      .catch((error) => {
+        alert("Something is Wrong!");
       });
   };
 
